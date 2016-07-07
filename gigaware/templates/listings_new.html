@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container">
+    <h1>New Job Listing</h1>
+
+    <form method="POST" role="form">
+        {% from "_formhelpers.html" import render_errors, render_field %}
+        {{ form.csrf_token }}
+        {{ render_errors(form) }}
+        <hr/>
+
+        {{ render_field(form.description, placeholder="Driver") }}
+        {{ render_field(form.details, placeholder="Pick me up from work at 9pm") }}
+        {{ render_field(form.city, placeholder="San Francisco") }}
+        {{ render_field(form.country, placeholder="United States") }}
+        {{ render_field(form.zip_code, placeholder="94118") }}
+        {{ render_field(form.price, placeholder="30") }}
+        {{ render_field(form.currency, placeholder="USD") }}
+        {{ render_field(form.image_url) }}
+
+        <div class="actions">
+            <button type="submit" class="btn btn-lg btn-primary">Create Property</button>
+        </div>
+    </form>
+
+    <a href="{{ url_for('listings') }}">Back</a>
+</div>
+
+{% endblock %}
