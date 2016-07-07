@@ -5,10 +5,10 @@ class DefaultConfig(object):
     SECRET_KEY = 'secret-key'
     DEBUG = False
     SQLALCHEMY_DATABASE_URI = 'sqlite://'
-    TWILIO_ACCOUNT_SID = 'AC8f9b5a52430b59c4275e1a9b8bc7a78a'
-    TWILIO_AUTH_TOKEN = 'd78c7e970a38a975aa3e229d5700957c'
-    TWILIO_NUMBER = '+12065390536'
-    APPLICATION_SID = 'AP73a2377a9d43c2ccb7981ce02513eba3'
+    TWILIO_ACCOUNT_SID = os.environ['TWILIO_ACCOUNT_SID']
+    TWILIO_AUTH_TOKEN = os.environ['TWILIO_AUTH_TOKEN']
+    TWILIO_NUMBER = os.environ['TWILIO_NUMBER']
+    APPLICATION_SID = os.environ['APPLICATION_SID']
 
 
 class DevelopmentConfig(DefaultConfig):
