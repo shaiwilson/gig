@@ -6,10 +6,14 @@
 
 {% endblock %}
 
+
 {% block content %}
+
+<script src="{{ url_for('static', filename='js/facebook_login.js') }}"></script>
 
 <div class="container">
     <h1>Signup for OUR APP</h1>
+
     <form method="POST" role="form">
         {% from "_formhelpers.html" import render_errors, render_field %}
         {{ form.csrf_token }}
@@ -24,6 +28,12 @@
 
         <button type="submit" class="btn btn-primary">Sign up</button>
     </form>
+
+    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+    </fb:login-button>
+
+    <div id="status">
+    </div>
 
 </div>
 

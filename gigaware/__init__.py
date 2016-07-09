@@ -12,7 +12,7 @@ login_manager = LoginManager()
 
 
 def create_app(config_name='development', p_db=db, p_bcrypt=bcrypt, p_login_manager=login_manager):
-    new_app = Flask(__name__)
+    new_app = Flask(__name__, static_url_path='/static')
     config_app(config_name, new_app)
 
     p_db.init_app(new_app)
