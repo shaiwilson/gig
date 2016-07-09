@@ -28,6 +28,11 @@ class RegisterForm(Form):
             validators=[DataRequired("Valid phone number is required")]
     )
 
+    zip_code = IntegerField(
+            'Post code:',
+            validators=[DataRequired("Valid postcode is required")]
+    )
+
 
 class LoginForm(Form):
     email = TextField(

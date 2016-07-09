@@ -31,7 +31,8 @@ def register():
                     email=form.email.data,
                     password=form.password.data,
                     phone_number="+{0}{1}".format(form.country_code.data, form.phone_number.data),
-                    area_code=str(form.phone_number.data)[0:3])
+                    area_code=str(form.phone_number.data)[0:3],
+                    zip_code=form.zip_code.data)
 
 
             db.session.add(user)

@@ -23,6 +23,7 @@ def upgrade():
                     sa.Column('password', sa.String(), nullable=False),
                     sa.Column('phone_number', sa.String(), nullable=False),
                     sa.Column('area_code', sa.String(), nullable=False),
+                    sa.Column('zip_code', sa.Integer(), nullable=False),
                     sa.PrimaryKeyConstraint('id')
                     )
     op.create_table('job_listings',

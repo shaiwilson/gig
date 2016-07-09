@@ -25,6 +25,7 @@
         {{ render_field(form.password) }}
         {{ render_field(form.country_code, id="authy-countries" ) }}
         {{ render_field(form.phone_number , type='number') }}
+        {{ render_field(form.zip_code , placeholder='94118') }}
 
         <button type="submit" class="btn btn-primary">Sign up</button>
     </form>
