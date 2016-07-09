@@ -27,7 +27,7 @@ class FormTests(BaseTestCase):
         assert form.validate() is False
 
     def test_populate_job_listing_form_with_missing_params_should_be_ok(self):
-        form = JobListingForm(description='description')
+        form = JobListingForm(description='description', )
 
         assert form.validate() is False
 

@@ -74,6 +74,16 @@ def logout():
 def home():
     return view('home')
 
+@app.route('/account', methods=["GET"])
+@login_required
+def account():
+    return view('account')
+
+
+@app.route('/support', methods=["GET"])
+def support():
+    return view('support')
+
 
 @app.route('/listings', methods=["GET"])
 @login_required
@@ -194,12 +204,6 @@ def exchange_voice():
     response.addPlay("http://howtodocs.s3.amazonaws.com/howdy-tng.mp3")
     response.addDial(outgoing_number)
     return twiml(response)
-
-@app.route('/support')
-def support():
-    """ Render static support page with FAQ's and best practices """
-    return view('home')
-
 
 # controller utils
 @app.before_request
