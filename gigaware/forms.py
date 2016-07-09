@@ -44,6 +44,10 @@ class JobListingForm(Form):
             'Job Task:',
             validators=[DataRequired("Description is required")]
     )
+    image_url = TextField(
+            'Image URL:',
+            validators=[DataRequired("Image Url required"), URL(message="Invalid Image Url")]
+    )
     city = TextField(
             'City:',
             validators=[DataRequired("City required")]
@@ -66,10 +70,6 @@ class JobListingForm(Form):
     currency = TextField(
             'Currency:',
             validators=[DataRequired("Currency required")]
-    )
-    image_url = TextField(
-            'Image URL:',
-            validators=[DataRequired("Image Url required"), URL(message="Invalid Image Url")]
     )
 
 
