@@ -3,8 +3,9 @@
 <form action="{{ url_for('logout') }}" method="POST" id="logoutForm" style="display:none;"></form>
 <li><img src="/static/images/spock.png" alt="logo"/></li>
 <li><a href="{{ url_for('account') }}" id="accountLink">Account</a></li>
-<li><a href="{{ url_for('reservations') }}" id="reservationsLink">Job Listing</a></li>
+<li><a href="{{ url_for('reservations') }}" id="reservationsLink">Dashboard</a></li>
 <li><a href="{{ url_for('new_property') }}" id="newPropertyLink">New Job Listing</a></li>
+<li><a href="{{ url_for('listings') }}" id="allJobsLink">Tasks</a></li>
 <li><a href="javascript:document.getElementById('logoutForm').submit()" id="logoutLink">Log out</a></li>
 {% else %}
 <li><a href="{{ url_for('register') }}" id="registerLink">Sign Up</a></li>
