@@ -2,6 +2,8 @@
 
 {% block content %}
 
+<script src="{{ url_for('static', filename='js/geolocation.js') }}"></script>
+
 <div class="property-detail">
     <div class="overview">
         <img src="{{job_task.image_url}}" alt="Vacation property image"/>
@@ -39,5 +41,11 @@
         </div>
     </div>
 </div>
+
+<div id="floating-panel">
+     <input id="address" type="textbox" value="Sydney, NSW">
+     <input id="submit" type="button" value="Geocode">
+   </div>
+   <div id="map"></div>
 
 {% endblock %}
