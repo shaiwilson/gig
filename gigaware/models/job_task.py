@@ -11,7 +11,7 @@ class JobTask(db.Model):
     image_url = db.Column(db.String, nullable=False)
     city = db.Column(db.String, nullable=False)
     country = db.Column(db.String, nullable=False)
-    zip_code = db.Column(db.String, nullable=False)
+    zip_code = db.Column(db.Integer, nullable=False)
     details = db.Column(db.String, nullable=False)
     price = db.Column(db.String, nullable=False)
     currency = db.Column(db.String, nullable=False)
