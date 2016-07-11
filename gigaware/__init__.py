@@ -21,7 +21,6 @@ def create_app(config_name='development', p_db=db, p_bcrypt=bcrypt, p_login_mana
     p_login_manager.login_view = 'register'
     return new_app
 
-
 def config_app(config_name, new_app):
     new_app.config.from_object(config_env_files[config_name])
 
