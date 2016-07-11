@@ -2,7 +2,13 @@
 
 {% block content %}
 
+
+
+
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
 <script src="{{ url_for('static', filename='js/geolocation.js') }}"></script>
+
+
 
 <div class="property-detail">
     <div class="overview">
@@ -19,6 +25,47 @@
             {{job_task.price}}
             {{job_task.currency}}
         </p>
+
+
+
+    <!-- Google Map Code -->
+    <script type="text/javascript">
+    <!--
+        function GetLocation() {
+            var geocoder = new google.maps.Geocoder();
+            var address = "{{job_task.zip_code}}";
+            geocoder.geocode({ 'address': address }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    latitude = results[0].geometry.location.lat();
+                    longitude = results[0].geometry.location.lng();
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                    center: { lat: latitude, lng: longitude },
+                    zoom: 12
+                    });
+                    var workRange = new google.maps.Circle({
+                      center:{ lat: latitude, lng: longitude },
+                      radius:2000,
+                      strokeColor:"#0000FF",
+                      strokeOpacity:0.5,
+                      strokeWeight:2,
+                      fillColor:"#0000FF",
+                      fillOpacity:0.20
+                    });
+                    workRange.setMap(map);
+                } else {
+                    alert("Map failed.")
+                }
+            });
+        };
+        window.onload=GetLocation();
+        //-->
+    </script>
+
+    <div style="height:200px; width:200px;" id="map"></div>
+    <!-- End Google Map  -->
+
+
+
         <hr>
         <div class="panel panel-default">
             <div class="panel-heading">
