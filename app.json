@@ -1,0 +1,43 @@
+{
+    "name": "Gigaware",
+    "description": "A Flask web app to help people find jobs",
+    "keywords": [
+        "python",
+        "flask",
+        "2 factor authentication",
+        "sms messaging",
+        "google translate",
+        "facebook oauth"
+    ],
+    "website": "https://www.example.com",
+    "env": {
+        "SECRET_KEY": {
+            "description": "A secret key for the Flask app",
+            "generator": "secret"
+        },
+        "AUTHY_API_KEY": {
+            "description": "Your Authy API key",
+            "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        },
+        "TWILIO_ACCOUNT_SID": {
+            "description": "Your Twilio API key",
+            "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        },
+        "TWILIO_AUTH_TOKEN": {
+            "description": "Your Twilio auth token",
+            "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        },
+        "TWILIO_NUMBER": {
+            "description": "Your registered Twilio number key",
+            "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        },
+        "APPLICATION_SID": {
+            "description": "Your Twilio Twilmil application key",
+            "value": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        }
+    },
+    "scripts": {
+        "postdeploy": "python manage.py db upgrade"
+    },
+    "success_url": "/"
+}
