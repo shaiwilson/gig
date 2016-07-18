@@ -4,7 +4,7 @@ from flask.ext.login import login_user, logout_user, current_user, login_require
 import twilio.twiml
 
 from gigaware.forms import RegisterForm, LoginForm, JobListingForm, ApplicationForm, \
-    ApplicationConfirmationForm, ExchangeForm
+    ApplicationConfirmationForm, ExchangeForm, VerifyForm
 from gigaware.view_helpers import twiml, view, redirect_to, view_with_params
 from gigaware.models import init_models_module
 
@@ -48,6 +48,9 @@ def register():
 
 @app.route('/login', methods=["GET", "POST"])
 def login():
+    """
+    Powers the main login form.
+    """
     form = LoginForm()
     if request.method == 'POST':
         if form.validate_on_submit():
@@ -66,6 +69,9 @@ def login():
 @app.route('/logout', methods=["POST"])
 @login_required
 def logout():
+    """Log out a user, clearing their session variables"""
+    session.pop('user_id', None)
+
     logout_user()
     return redirect_to('home')
 
