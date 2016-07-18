@@ -28,4 +28,10 @@
     </form>
 </div>
 
+{% include "_authy_modal.html" %}
+
+{% endblock %}
+
+{% block page_scripts %}
+<script src="{{ url_for('static', filename='js/sessions.js') }}"></script>
 {% endblock %}
