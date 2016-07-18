@@ -1,5 +1,5 @@
 from gigaware import db, bcrypt, app, login_manager
-from flask import session, g, request, flash, Blueprint
+from flask import session, g, request, flash, Blueprint, render_template
 from flask.ext.login import login_user, logout_user, current_user, login_required
 import twilio.twiml
 
@@ -78,7 +78,8 @@ def home():
 @app.route('/account', methods=["GET"])
 @login_required
 def account():
-    return view('account')
+    user = User.query.get(session['user_id'])
+    return view_with_params('account', user=user)
 
 
 @app.route('/support', methods=["GET"])

@@ -25,16 +25,6 @@ class ViewsTests(BaseTestCase):
 
         self.assert_template_used('register.html')
 
-    def test_get_to_listings_route_should_render_default_view(self):
-        self.client.get('/listings')
-
-        self.assert_template_used('listings.html')
-
-    def test_get_to_account_route_should_render_default_view(self):
-        self.client.get('/account')
-
-        self.assert_template_used('account.html')
-
 
 if __name__ == '__main__':
     unittest.main()
