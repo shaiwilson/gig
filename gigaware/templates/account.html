@@ -8,6 +8,18 @@
     <p>say something here</p>
 </div>
 
+<h1>{{ user.full_name }}</h1>
+<table>
+    <tr>
+        <th>E-Mail</th>
+        <td>{{ user.email }}</td>
+    </tr>
+    <tr>
+        <th>Phone</th>
+        <td>{{ user.phone }}</td>
+    </tr>
+</table>
+
 {% endblock %}
 
 {% block content %}
