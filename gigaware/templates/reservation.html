@@ -1,13 +1,8 @@
 {% extends "layout.html" %}
-
 {% block content %}
-
-
-
 
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
 <script src="{{ url_for('static', filename='js/geolocation.js') }}"></script>
-
 
 
 <div class="property-detail">
@@ -26,11 +21,8 @@
             {{job_task.currency}}
         </p>
 
-
-
     <!-- Google Map Code -->
     <script type="text/javascript">
-    <!--
         function GetLocation() {
             var geocoder = new google.maps.Geocoder();
             var address = "{{job_task.zip_code}}";
@@ -58,13 +50,10 @@
             });
         };
         window.onload=GetLocation();
-        //-->
     </script>
 
     <div style="height:200px; width:200px;" id="map"></div>
     <!-- End Google Map  -->
-
-
 
         <hr>
         <div class="panel panel-default">
@@ -80,13 +69,10 @@
                     {{ render_field(form.property_id)}}
                     {{ render_field(form.message,
                     placeholder="Hello! I have the skills for this position...") }}
-
-
                     <button class="btn btn-primary">Apply Now</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
-
 {% endblock %}
