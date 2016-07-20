@@ -6,7 +6,7 @@ db = app_db()
 class JobTask(db.Model):
     __tablename__ = "job_listings"
 
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     description = db.Column(db.String, nullable=False)
     image_url = db.Column(db.String, nullable=False)
     city = db.Column(db.String, nullable=False)

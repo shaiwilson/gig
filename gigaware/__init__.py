@@ -19,6 +19,7 @@ def create_app(config_name='development', p_db=db, p_bcrypt=bcrypt, p_login_mana
     p_bcrypt.init_app(new_app)
     p_login_manager.init_app(new_app)
     p_login_manager.login_view = 'register'
+    db.init_app(new_app)
     return new_app
 
 def config_app(config_name, new_app):

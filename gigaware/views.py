@@ -1,5 +1,5 @@
 from gigaware import db, bcrypt, app, login_manager
-from flask import session, g, request, flash, Blueprint, render_template
+from flask import session, g, request, flash, Blueprint, render_template, jsonify
 from flask.ext.login import login_user, logout_user, current_user, login_required
 import twilio.twiml
 
@@ -9,6 +9,10 @@ from gigaware.view_helpers import twiml, view, redirect_to, view_with_params
 from gigaware.models import init_models_module
 
 init_models_module(db, bcrypt, app)
+
+# from authy import AuthyApiException
+# from gigaware.utils import create_user, send_authy_token_request, verify_authy_token
+# from gigaware.decorators import login_required, verify_authy_request
 
 from gigaware.models.user import User
 from gigaware.models.job_task import JobTask
@@ -27,13 +31,13 @@ def register():
                 return view('register', form)
 
             user = User(
-                    name=form.name.data,
+                    first_name=form.first_name.data,
+                    last_name=form.last_name.data,
                     email=form.email.data,
                     password=form.password.data,
                     phone_number="+{0}{1}".format(form.country_code.data, form.phone_number.data),
                     area_code=str(form.phone_number.data)[0:3],
                     zip_code=form.zip_code.data)
-
 
             db.session.add(user)
             db.session.commit()

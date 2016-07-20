@@ -8,7 +8,7 @@ db = app_db()
 class Reservation(db.Model):
     __tablename__ = "reservations"
 
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     message = db.Column(db.String, nullable=False)
     status = db.Column(db.Enum('pending', 'confirmed', 'rejected', name='reservation_status_enum'), default='pending')
     anonymous_phone_number = db.Column(db.String, nullable=True)
