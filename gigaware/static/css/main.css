@@ -6,7 +6,8 @@ body.cover footer {
 }
 
 .hero-text {
-    background: url(/static/images/tngbg.jpg);
+    background: url(/static/images/painters.jpg);
+    background-position: center;
     margin: 0px;
     top: 0px;
     text-align: center;
@@ -43,7 +44,7 @@ body.cover footer {
 }
 
 .navbar.navbar-transparent {
-    background: transparent;
+    background: white;
     position: absolute;
     width: 100%;
     top: 0px;
@@ -59,7 +60,7 @@ body.cover footer {
 .navbar .navbar-brand {
     background: url(/static/images/airtng-logo.png) no-repeat;
     padding-left: 40px;
-    color: white;
+    color: #337ab7;
     font-size: 32px;
 }
 
