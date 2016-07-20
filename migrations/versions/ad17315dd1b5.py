@@ -14,7 +14,7 @@ from alembic import op
 import sqlalchemy as sa
 from sqlalchemy.dialects.postgresql import ENUM
 
-reservation_status_enum = ENUM('pending', 'confirmed', 'rejected', name='reservation_status_enum',
+status = ENUM('pending', 'confirmed', 'rejected', name='reservation_status_enum',
                             create_type=False)
 
 def upgrade():
