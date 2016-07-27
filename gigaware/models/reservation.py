@@ -35,7 +35,7 @@ class Reservation(db.Model):
     def notify_host(self):
         self._send_message(self.job_task.host.phone_number,
                            render_template('messages/sms_host.txt',
-                                           name=self.guest.name,
+                                           name=self.guest.first_name,
                                            description=self.job_task.description,
                                            message=self.message))
 
