@@ -10,10 +10,6 @@ from gigaware.models import init_models_module
 
 init_models_module(db, bcrypt, app)
 
-# from authy import AuthyApiException
-# from gigaware.utils import create_user, send_authy_token_request, verify_authy_token
-# from gigaware.decorators import login_required, verify_authy_request
-
 from gigaware.models.user import User
 from gigaware.models.job_task import JobTask
 from gigaware.models.reservation import Reservation
@@ -49,26 +45,6 @@ def register():
 
     return view('register', form)
 
-
-# @app.route('/login', methods=["GET", "POST"])
-# def login():
-#     """
-#     Powers the main login form.
-#     """
-#     form = LoginForm()
-#     if request.method == 'POST':
-#         if form.validate_on_submit():
-#             candidate_user = User.query.filter(User.email == form.email.data).first()
-#
-#             if candidate_user is None or not bcrypt.check_password_hash(candidate_user.password,
-#                                                                         form.password.data):
-#                 form.password.errors.append("Invalid credentials.")
-#                 return view('login', form)
-#
-#             login_user(candidate_user, remember=True)
-#             return redirect_to('home')
-#     return view('login', form)
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     """
@@ -86,7 +62,7 @@ def login():
 
             elif candidate_user is not None and \
             bcrypt.check_password_hash(candidate_user.password, form.password.data):
-                session['user_id'] = user.id
+                session['user_id'] = User.id
                 login_user(candidate_user, remember=True)
                 return redirect_to('home')
     return view('login', form)
@@ -198,7 +174,7 @@ def confirm_reservation():
     reservation = Reservation \
         .query \
         .filter(Reservation.status == 'pending'
-                and Reservation.job_task.host.id == user.id) \
+                and Reservation.job_task.host.id == User.id) \
         .first()
 
     if reservation is not None:

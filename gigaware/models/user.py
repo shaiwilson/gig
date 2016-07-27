@@ -1,12 +1,14 @@
 from gigaware.models import app_db
 from gigaware.models import bcrypt
 
-import requests
+from flask_sqlalchemy import SQLAlchemy
 from gigaware import db
 
 db = app_db()
 bcrypt = bcrypt()
 
+##############################################################################
+# Model definitions
 
 class User(db.Model):
     """
