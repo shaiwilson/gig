@@ -1,10 +1,10 @@
 from gigaware import db, bcrypt, app, login_manager
-from flask import session, g, request, flash, Blueprint, render_template
+from flask import session, g, request, flash, Blueprint, render_template, jsonify
 from flask.ext.login import login_user, logout_user, current_user, login_required
 import twilio.twiml
 
 from gigaware.forms import RegisterForm, LoginForm, JobListingForm, ApplicationForm, \
-    ApplicationConfirmationForm, ExchangeForm
+    ApplicationConfirmationForm, ExchangeForm, VerifyForm
 from gigaware.view_helpers import twiml, view, redirect_to, view_with_params
 from gigaware.models import init_models_module
 
@@ -27,13 +27,13 @@ def register():
                 return view('register', form)
 
             user = User(
-                    name=form.name.data,
+                    first_name=form.first_name.data,
+                    last_name=form.last_name.data,
                     email=form.email.data,
                     password=form.password.data,
                     phone_number="+{0}{1}".format(form.country_code.data, form.phone_number.data),
                     area_code=str(form.phone_number.data)[0:3],
                     zip_code=form.zip_code.data)
-
 
             db.session.add(user)
             db.session.commit()
@@ -45,27 +45,35 @@ def register():
 
     return view('register', form)
 
-
-@app.route('/login', methods=["GET", "POST"])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
+    """
+    Powers the main login form.
+    """
     form = LoginForm()
     if request.method == 'POST':
         if form.validate_on_submit():
             candidate_user = User.query.filter(User.email == form.email.data).first()
 
             if candidate_user is None or not bcrypt.check_password_hash(candidate_user.password,
-                                                                        form.password.data):
-                form.password.errors.append("Invalid credentials.")
-                return view('login', form)
+                                                                                    form.password.data):
+                            form.password.errors.append("Invalid credentials.")
+                            return view('login', form)
 
-            login_user(candidate_user, remember=True)
-            return redirect_to('home')
+            elif candidate_user is not None and \
+            bcrypt.check_password_hash(candidate_user.password, form.password.data):
+                session['user_id'] = User.id
+                login_user(candidate_user, remember=True)
+                return redirect_to('home')
     return view('login', form)
 
 
 @app.route('/logout', methods=["POST"])
 @login_required
 def logout():
+    """Log out a user, clearing their session variables"""
+    session.pop('user_id', None)
+
     logout_user()
     return redirect_to('home')
 
@@ -166,7 +174,7 @@ def confirm_reservation():
     reservation = Reservation \
         .query \
         .filter(Reservation.status == 'pending'
-                and Reservation.job_task.host.id == user.id) \
+                and Reservation.job_task.host.id == User.id) \
         .first()
 
     if reservation is not None:
