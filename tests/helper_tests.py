@@ -1,5 +1,5 @@
 import unittest
-from gigaware.view_helpers import redirect_to, view
+from gigaware.views.view_helpers import redirect_to, view
 from tests.base import BaseTestCase
 from flask import redirect, url_for, render_template
 

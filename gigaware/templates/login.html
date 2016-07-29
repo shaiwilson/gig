@@ -14,7 +14,7 @@
 
     <h1>Log in</h1>
 
-    <form method="POST" role="form">
+    <form method="POST" role="form" id="login-form">
         {% from "_formhelpers.html" import render_errors, render_field %}
         {{ form.csrf_token }}
         {{ render_errors(form) }}

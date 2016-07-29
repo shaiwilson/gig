@@ -6,6 +6,8 @@ install:
   - pip install -r requirements.txt
   - pip install coveralls
 before_script:
+  - psql -c 'CREATE DATABASE "gigaware";' -U postgres
+  - python manage.py db downgrade
   - python manage.py db upgrade
 script: coverage run manage.py test
 after_success:

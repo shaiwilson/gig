@@ -5,7 +5,7 @@
 <div class="hero-text">
     <h1>Account</h1>
 
-    <p>say something here</p>
+    <p>Edit your account options</p>
 </div>
 
 <h1>{{ user.name }}</h1>
@@ -23,5 +23,127 @@
 {% endblock %}
 
 {% block content %}
+
+<div class="container">
+    <div class="row">
+            <div class="col-md-3" id="leftCol">
+                
+                <div class="well"> 
+                <ul class="nav nav-stacked" id="sidebar">
+                  <li><a href="#link-to-public-profile">View Your Public Profile</a></li>
+                  <li><a href="#profile">Edit Your Profile</a></li>
+                  <li><a href="#settings">Edit Your Account Settings</a></li>
+                  <li><a href="#reviews">View Your Reviews</a></li>
+                </ul>
+                </div>
+            </div>  
+            <div class="col-md-9">
+                <h2>Settings</h2>
+                
+            <hr>
+                <h2 id="profile">User Profile</h2>
+                <p>
+                Changes will be reflected on your public profile page.
+                </p>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="panel panel-default">
+                      <div class="panel-heading"><h3>About Me</h3></div>
+                      <div class="panel-body">
+                          <textarea class="form-control" rows="8" type="text" id="AboutMe">Hello! My name is Jane and I have been living in London for one year. I enjoy working with families and children. I study English and Business during the weekday and am mostly available in the evening and weekends.
+                        </textarea>
+                        <br />
+                        <button type="submit" class="btn btn-primary">Edit</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="panel panel-default">
+                      <div class="panel-heading"><h3>Change Photo</h3></div>
+                      <div class="panel-body">
+                         <div class="text-center">
+                        <img src="https://pbs.twimg.com/profile_images/716694780344819712/E-rA5Qqj_400x400.jpg" class="avatar img-circle" alt="avatar" style="height: 30%; width: 30%">
+                        <br /> <br />
+                      <input type="file" class="form-control">
+                      </div>
+                      <br />
+                    <button type="submit" class="btn btn-primary">Upload</button>
+              
+                      </div>
+                    </div>
+                  </div>  
+                </div>
+                <hr>
+                    <h2 id="settings">Edit Account Settings</h2>
+        <h3>Personal info</h3>
+        <form class="form-horizontal" role="form">
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Email:</label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text" value="janesemail@gmail.com">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Time Zone:</label>
+            <div class="col-lg-8">
+              <div class="ui-select">
+                <select id="user_time_zone" class="form-control">
+                  <option value="Hawaii">(GMT-10:00) Hawaii</option>
+                  <option value="Alaska">(GMT-09:00) Alaska</option>
+                  <option value="Pacific Time (US &amp; Canada)">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
+                  <option value="Arizona">(GMT-07:00) Arizona</option>
+                  <option value="Mountain Time (US &amp; Canada)">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
+                  <option value="Central Time (US &amp; Canada)" selected="selected">(GMT-06:00) Central Time (US &amp; Canada)</option>
+                  <option value="Eastern Time (US &amp; Canada)">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
+                  <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Currency:</label>
+            <div class="col-lg-8">
+              <div class="ui-select">
+          <select id="user_currency" class="form-control">
+                  <option value="GBP">Great Britain Pound</option>
+                  <option value="EUR">Euro</option>
+                  <option value="USD">United States Dollar</option>
+          </select>
+             </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label">Username:</label>
+            <div class="col-md-8">
+              <input class="form-control" type="text" value="janeuser">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label">Password:</label>
+            <div class="col-md-8">
+              <input class="form-control" type="password" value="11111122333">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label">Confirm password:</label>
+            <div class="col-md-8">
+              <input class="form-control" type="password" value="11111122333">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label"></label>
+            <div class="col-md-8">
+              <input type="button" class="btn btn-primary" value="Save Changes">
+              <span></span>
+              <input type="reset" class="btn btn-default" value="Cancel">
+            </div>
+          </div>
+        </form>
+                <hr>
+                <h2 id="reviews">Posted Reviews</h2>
+                View your public reviews for other users.
+    </div>
+  </div>
+</div>
 
 {% endblock %}
