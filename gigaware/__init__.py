@@ -6,10 +6,10 @@ from flask.ext.bcrypt import Bcrypt
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from gigaware.models import init_models_module
+
 db = SQLAlchemy()
 bcrypt = Bcrypt()
 login_manager = LoginManager()
-
 
 def create_app(config_name='development', p_db=db, p_bcrypt=bcrypt, p_login_manager=login_manager):
     new_app = Flask(__name__)
