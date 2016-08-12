@@ -73,22 +73,24 @@ def confirm_reservation():
                 and Reservation.job_task.host.id == User.id) \
         .first()
 
-    if reservation is not None:
-        if 'yes' in form.Body.data or 'accept' in form.Body.data:
-            reservation.confirm()
-            reservation.buy_number(user.area_code)
-        else:
-            reservation.reject()
+    if reservation is None:
+        return
+ 
+    if 'yes' in form.Body.data or 'accept' in form.Body.data:
+        reservation.confirm()
+        reservation.buy_number(user.area_code)
+    else:
+        reservation.reject()
 
-        db.session.commit()
+    db.session.commit()
 
-        sms_response_text = "You have successfully {0} the reservation".format(
-            reservation.status)
-        reservation.notify_guest()
+    sms_response_text = "You have successfully {0} the reservation".format(
+        reservation.status)
+    reservation.notify_guest()
 
     return twiml(_respond_message(sms_response_text))
 
-    def _respond_message(message):
-        response = twilio.twiml.Response()
-        response.message(message)
-        return response
+def _respond_message(message):
+    response = twilio.twiml.Response()
+    response.message(message)
+    return response
