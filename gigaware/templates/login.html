@@ -12,7 +12,9 @@
 
 <div class="container">
 
-    <h1>Log in</h1>
+    <h1>{{ translate("Log In") }}</h1>
+
+    {{ translate("Welcome. Please log in below.") }}
 
     <form method="POST" role="form" id="login-form">
         {% from "_formhelpers.html" import render_errors, render_field %}
@@ -20,15 +22,13 @@
         {{ render_errors(form) }}
         <hr/>
 
-        {{ render_field(form.email, placeholder='your@email.com') }}
-        {{ render_field(form.password, placeholder='your password')}}
+        {{ render_field(form.email, placeholder=translate("Your Email")) }}
+        {{ render_field(form.password, placeholder=translate("Your Password")) }}
         <button type="submit" class="btn btn-primary"/>
-        Log In
+        {{ translate("Log In") }}
     </form>
     </form>
 </div>
-
-{% include "_authy_modal.html" %}
 
 {% endblock %}
 
