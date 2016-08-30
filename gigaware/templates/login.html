@@ -14,6 +14,8 @@
 
     <h1>Log in</h1>
 
+    {{ test_translate(hi) }}
+
     <form method="POST" role="form" id="login-form">
         {% from "_formhelpers.html" import render_errors, render_field %}
         {{ form.csrf_token }}
@@ -27,8 +29,6 @@
     </form>
     </form>
 </div>
-
-{% include "_authy_modal.html" %}
 
 {% endblock %}
 

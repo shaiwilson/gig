@@ -7,6 +7,7 @@ from flask.ext.sqlalchemy import SQLAlchemy
 
 from flask_login import LoginManager
 from gigaware.models import init_models_module
+from gigaware import translator
 
 db = SQLAlchemy()
 bcrypt = Bcrypt()
@@ -23,6 +24,10 @@ def create_app(config_name='development', p_db=db, p_bcrypt=bcrypt, p_login_mana
     db.init_app(new_app)
     init_models_module(db, p_bcrypt, new_app)
 
+    new_app.add_template_global(translator.translate)
+    new_app.add_template_global(translator.translate_all)
+    new_app.add_template_global(translator.test_translate)
+
     return new_app
 
 def config_app(config_name, new_app):
@@ -30,6 +35,5 @@ def config_app(config_name, new_app):
 
 
 app = create_app()
-
 
 import gigaware.views
