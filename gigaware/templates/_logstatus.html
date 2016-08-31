@@ -2,13 +2,13 @@
 {% if current_user.is_authenticated %}
 <form action="{{ url_for('logout') }}" method="POST" id="logoutForm" style="display:none;"></form>
 <li><img src="/static/images/spock.png" alt="logo"/></li>
-<li><a href="{{ url_for('account') }}" id="accountLink">Account</a></li>
-<li><a href="{{ url_for('reservations') }}" id="reservationsLink">Dashboard</a></li>
-<li><a href="{{ url_for('new_property') }}" id="newPropertyLink">New Job Listing</a></li>
-<li><a href="{{ url_for('listings') }}" id="allJobsLink">Tasks</a></li>
-<li><a href="javascript:document.getElementById('logoutForm').submit()" id="logoutLink">Log out</a></li>
+<li><a href="{{ url_for('account') }}" id="accountLink">{{ translate("Account") }}</a></li>
+<li><a href="{{ url_for('reservations') }}" id="reservationsLink">{{ translate("Dashboard") }}</a></li>
+<li><a href="{{ url_for('new_property') }}" id="newPropertyLink">{{ translate("New Job Listing") }}</a></li>
+<li><a href="{{ url_for('listings') }}" id="allJobsLink">translate("Tasks") }}</a></li>
+<li><a href="javascript:document.getElementById('logoutForm').submit()" id="logoutLink">{{ translate("Log out") }}</a></li>
 {% else %}
-<li><a href="{{ url_for('register') }}" id="registerLink">Sign Up</a></li>
-<li><a href="{{ url_for('login') }}" id="loginLink">Log In</a></li>
-<li><a href="{{ url_for('support') }}" id="supportLink">How it Works</a></li>
+<li><a href="{{ url_for('register') }}" id="registerLink">{{ translate("Register") }}</a></li>
+<li><a href="{{ url_for('login') }}" id="loginLink">{{ translate("Log In") }}</a></li>
+<li><a href="{{ url_for('support') }}" id="supportLink">{{ translate("How it Works") }}</a></li>
 {% endif %}

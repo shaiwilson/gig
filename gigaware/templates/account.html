@@ -5,17 +5,17 @@
 <div class="hero-text">
     <h1>Account</h1>
 
-    <p>Edit your account options</p>
+    <p>{{ translate("Edit your account options") }}</p>
 </div>
 
 <h1>{{ user.name }}</h1>
 <table>
     <tr>
-        <th>E-Mail</th>
+        <th>{{ translate("E-Mail") }}</th>
         <td>{{ user.email }}</td>
     </tr>
     <tr>
-        <th>Location</th>
+        <th>{{ translate("Location") }}</th>
         <td>{{ user.zip_code }}</td>
     </tr>
 </table>
@@ -30,10 +30,10 @@
                 
                 <div class="well"> 
                 <ul class="nav nav-stacked" id="sidebar">
-                  <li><a href="#link-to-public-profile">View Your Public Profile</a></li>
-                  <li><a href="#profile">Edit Your Profile</a></li>
-                  <li><a href="#settings">Edit Your Account Settings</a></li>
-                  <li><a href="#reviews">View Your Reviews</a></li>
+                  <li><a href="#link-to-public-profile">{{ translate("View Your Public Profile") }}</a></li>
+                  <li><a href="#profile">{{ translate("Edit Your Profile") }}</a></li>
+                  <li><a href="#settings">{{ translate("Edit Your Account Settings") }}</a></li>
+                  <li><a href="#reviews">{{ translate("View Your Reviews") }}</a></li>
                 </ul>
                 </div>
             </div>  
