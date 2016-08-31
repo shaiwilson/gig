@@ -2,6 +2,8 @@ from flask_wtf import Form
 from wtforms import TextField, PasswordField, IntegerField, HiddenField
 from wtforms.validators import DataRequired, Length, Email, URL
 
+from gigaware import translator
+
 class RegisterForm(Form):
     """Form used for registering new users"""
     first_name = TextField(
@@ -42,12 +44,17 @@ class RegisterForm(Form):
 class LoginForm(Form):
     """Form used for logging in existing users"""
     email = TextField(
-            'E-mail:',
-            validators=[DataRequired("E-mail is required"), Email(message="Invalid E-mail address")]
+            translator.translate('E-mail:'),
+            validators=[
+                DataRequired(translator.translate("E-mail is required")), 
+                Email(message=translator.translate("Invalid E-mail address"))
+            ]
     )
     password = PasswordField(
-            'Password:',
-            validators=[DataRequired("Password is required")]
+            translator.translate('Password:'),
+            validators=[
+                DataRequired(translator.translate("Password is required")),
+            ]
     )
 
 
