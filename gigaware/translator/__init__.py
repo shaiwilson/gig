@@ -1,8 +1,13 @@
 from translator import Translator
 from bing_translator import BingTranslator
-import redis
 
-gig_redis = redis.StrictRedis(host='localhost', port=6379, db=0)
+import redis
+import os
+
+REDIS_HOST = os.environ.get("REDIS_HOST", "localhost")
+REDIS_PORT = os.environ.get("REDIS_PORT", "6379")
+
+gig_redis = redis.StrictRedis(host=REDIS_HOST, port=REDIS_PORT, db=0)
 
 TARGET_TRANSLATION_LANG = 'de'
 
