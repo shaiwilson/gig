@@ -24,7 +24,12 @@ def translate(untranslated):
     key = build_localizable_key(untranslated, TARGET_TRANSLATION_LANG)
 
     # If redis contains the localized string in the target language, return it.
-    localized = gig_redis.get(key)
+    try:
+        localized = gig_redis.get(key)
+    except redis.exceptions.ConnectionError:
+        # No redis connection? Return the untranslated string.
+        return untranslated
+
     if localized:
         return localized.decode("utf-8")
 
