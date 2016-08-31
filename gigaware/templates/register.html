@@ -12,7 +12,7 @@
 <script src="{{ url_for('static', filename='js/facebook_login.js') }}"></script>
 
 <div class="container">
-    <h1>Signup for OUR APP</h1>
+    <h1>{{ translate("Register for Gig") }}</h1>
 
     <form method="POST" role="form">
         {% from "_formhelpers.html" import render_errors, render_field %}
