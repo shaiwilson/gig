@@ -24,8 +24,8 @@ def create_app(config_name='development', p_db=db, p_bcrypt=bcrypt, p_login_mana
     db.init_app(new_app)
     init_models_module(db, p_bcrypt, new_app)
 
+    # Add translator utilities.
     new_app.add_template_global(translator.translate)
-    new_app.add_template_global(translator.translate_all)
 
     return new_app
 
