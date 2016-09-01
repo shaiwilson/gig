@@ -25,6 +25,3 @@ class Translator:
             batched_untranslated, 
             self.target_langauge
         )
-
-    def test_translate(self, test):
-        return "wao"
