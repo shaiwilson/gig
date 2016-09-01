@@ -7,9 +7,10 @@ import os
 REDIS_HOST = os.environ.get("REDIS_HOST", "localhost")
 REDIS_PORT = os.environ.get("REDIS_PORT", "6379")
 
-gig_redis = redis.StrictRedis(host=REDIS_HOST, port=REDIS_PORT, db=0)
-
+TRANSLATE_ENABLED = bool(os.environ.get("TRANSLATION_ENABLED", False))
 TARGET_TRANSLATION_LANG = 'de'
+
+gig_redis = redis.StrictRedis(host=REDIS_HOST, port=REDIS_PORT, db=0)
 
 gig_translator = Translator()
 gig_translator.set_translator(BingTranslator())
@@ -22,6 +23,9 @@ def build_localizable_key(untranslated, target_translation_lang):
 
 def translate(untranslated):
     key = build_localizable_key(untranslated, TARGET_TRANSLATION_LANG)
+
+    if not TRANSLATE_ENABLED:
+        return untranslated
 
     # If redis contains the localized string in the target language, return it.
     try:
