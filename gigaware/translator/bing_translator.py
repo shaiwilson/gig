@@ -3,8 +3,8 @@ from microsofttranslator import Translator
 
 class BingTranslator:
     def __init__(self):
-        client_id = os.environ.get("BING_TRANSLATION_CLIENT_ID", "")
-        client_secret = os.environ.get("BING_TRANSLATION_SECRET", "")
+        client_id = os.environ.get("BING_TRANSLATION_CLIENT_ID", "gigaware123")
+        client_secret = os.environ.get("BING_TRANSLATION_SECRET", "Dp3afp41sR/sDsKRK3uWPt2i4WbAKqKB5q6RhCI9a1Q=")
 
         if not client_id or not client_secret:
             raise Exception("bing translation client id or client secret not found")
